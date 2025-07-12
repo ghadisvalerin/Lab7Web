@@ -1,0 +1,14 @@
+<?php
+namespace App\Cells;
+
+use App\Models\ArtikelModel;
+
+class ArtikelTerkini
+{
+    public function render()
+    {
+        $model = new ArtikelModel();
+        $artikel = $model->orderBy('tanggal', 'DESC')->limit(5)->findAll();
+        return view('components/artikel_terkini', ['artikel' => $artikel]);
+    }
+}
